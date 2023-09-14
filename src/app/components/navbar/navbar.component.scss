@@ -1,0 +1,59 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,800;1,700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap'); 
+    
+    .cabecalho-menu{
+        flex-direction: row;
+        display:flex;
+        color: #000;
+        font-family: 'Roboto';
+      }
+
+      .menu{
+        color: rgb(0, 0, 0);
+      }
+
+      .title-menu{
+        text-align: center;
+        font-family: 'Roboto';
+      }
+
+    
+      .titulo-principal{
+        color: #2D516C;
+        font-weight: bold;
+        font-size: 25px;
+        margin-top: 5px;
+        padding: 7px;
+    
+      }
+    
+      .flex{
+        display: flex;
+        flex-direction: row;
+      }
+    
+    
+      .img-logo{
+        height: 40px;
+        width: 40px;
+        margin-top: 10px;
+        margin-left: 20px;
+        flex-direction: row;
+      }
+
+      .Separador-menu{
+        color: #2D516C;
+        font-family: 'Roboto';
+        font-size: 20px;
+      }
+    
+      ion-title{
+        display: flex;
+        flex-direction: row;
+      }
+
+      button-native{
+        background-color: #2D516C;
+      }
+

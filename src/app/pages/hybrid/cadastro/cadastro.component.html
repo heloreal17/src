@@ -1,0 +1,328 @@
+<ion-app>
+    <!-- NÃO SERÁ NECESSÁRIO O CALENDÁRIO QUANDO O CADASTRO FOR ADICIONADO COMO COMPONENTE EM LOGIN-->
+    
+    <!--
+    <header>
+          <ion-img class="img-logo"src="assets/image/logo.png"alt="Logo"></ion-img>
+          <ion-title class="titulo">MedTempo</ion-title>
+        
+    </header>
+    -->
+
+    <div class="flex">
+        <div>
+            <h1>Faça seu cadastro:</h1>
+            <ion-label>
+                <h3 class="subtitulo">Selecione o tipo do seu perfil:</h3>
+            </ion-label>
+        </div>
+        <!-- Alterei de "usuário" para perfil -->
+        <!-- Alterei os tipos de botão para inserir os ícones -->
+
+        <div class="tipos-perfil">
+            <ion-button class="usuario" fill="outline" (click)="usr_type = 1">
+                <ion-icon name="person-outline" color="warning"></ion-icon>
+                Perfil Pessoal
+            </ion-button>
+            <ion-button class="usuario" fill="outline" (click)="usr_type = 2">
+                <ion-icon name="bag-add-outline" color="warning"></ion-icon>
+                Perfil Especialista
+            </ion-button>
+            <ion-button class="usuario" fill="outline" (click)="usr_type = 3">
+                <ion-icon name="people-outline" color="warning"></ion-icon>
+                Perfil Familiar
+            </ion-button>
+
+            <a href="/" class="saiba-mais">Conheças as diferenças dos tipos de perfil</a>
+        </div>
+    </div>
+
+    <form *ngIf="usr_type == 1" #event="ngForm" (ngSubmit)="Create(event, 'user-pessoal')">
+        <p class="users">Usuário Pessoal</p>
+        <div class="config-perfil">
+            <ion-item>
+                <ion-input
+                label="Nome completo:"
+                type="text"
+                class="campos"
+                labelPlacement="stacked"
+                [clearInput]="true"
+                placeholder="Ex: Mariana Silva"
+                name="nome"
+                required
+                >
+                </ion-input>
+            </ion-item>
+            
+            <ion-item>
+                <ion-select name="sexo" label-placement="floating" label="Selecione seu Sexo:" required>
+                    <ion-select-option [value]="true">Feminino</ion-select-option>
+                    <ion-select-option >Masculino</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="email"
+                    fill="solid"
+                    label="Email"
+                    labelPlacement="stacked"
+                    placeholder="Ex: exemplo@exemplo.com"
+                    ngModel
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="text"
+                    fill="solid"
+                    label="Insira sua profissão:"
+                    labelPlacement="stacked"
+                    placeholder="Ex: Pedagoga"
+                    name="local_trabalho"
+                    ngModel
+                    required
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="password"
+                    fill="solid"
+                    label="Insira sua senha"
+                    labelPlacement="stacked"
+                    value="password"
+                    required
+                    ngModel
+                ></ion-input>
+                <!-- Seria legal um validador dessa senha para ver se corresponde ao requisitos -->
+            </ion-item>
+            
+            <div>
+                <p class="data">Selecione sua data de nascimento:</p>
+            </div>
+            <ion-item>
+                <input type="date" class="data" name="data_nascimento" placeholder="insira data de nascimento"
+                required>
+                <ion-label class="label-idade">XX Anos</ion-label>
+            </ion-item>
+            <!-- Seria legal um calculador de idade automático -->
+            <!-- Idade não pode ser menor que 50 anos para cadastros pessoais -->
+            <div>
+                <ion-item>
+                    <ion-textarea label="Faça uma breve descrição da sua saúide:" rows="2" labelPlacement="floating" placeholder=""></ion-textarea>
+                </ion-item>
+            </div>
+
+            <div class="botao">
+                <!-- Alterei o tipo de botão, ficar atento ao type -->
+                <input type="submit" value="Cadastrar Usuário" class="button-cadastrar">
+            </div>
+        </div>
+    </form>
+
+
+    <form *ngIf="usr_type == 2" #event="ngForm" (ngSubmit)="Create(event, 'user-especialista')">
+        <p class="users">Usuário Especialista</p>
+        
+        <div class="config-perfil">
+            <ion-item>
+                <ion-input
+                label="Nome completo:"
+                type="text"
+                class="campos"
+                labelPlacement="stacked"
+                [clearInput]="true"
+                placeholder="Ex: Mariana Silva"
+                name="nome"
+                required
+                >
+                </ion-input>
+            </ion-item>
+        
+            <ion-item>
+                <ion-select name="sexo" label-placement="floating" label="Selecione seu Sexo:" required>
+                    <ion-select-option [value]="true">Feminino</ion-select-option>
+                    <ion-select-option >Masculino</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="text"
+                    fill="solid"
+                    label="Insira a CRM:"
+                    labelPlacement="stacked"
+                    placeholder="Ex: CRM/SP 123456"
+                    name="crm"
+                    ngModel
+                    required
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="text"
+                    fill="solid"
+                    label="Insira seu local de trabalho:"
+                    labelPlacement="stacked"
+                    placeholder="SP - Hospital São Camilo - Ipiranga"
+                    name="local_trabalho"
+                    ngModel
+                    required
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-input
+                    type="email"
+                    fill="solid"
+                    label="Email"
+                    name="email"
+                    labelPlacement="stacked"
+                    placeholder="Ex: exemplo@exemplo.com"
+                    ngModel
+                    required
+                ></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <input type="date" class="data" name="data_nascimento" placeholder="insira data de nascimento"
+                required>
+                <ion-label class="label-idade">XX Anos</ion-label>
+            </ion-item>
+            <!-- Seria legal um calculador de idade automático -->
+            <!-- Idade não pode ser menor que 50 anos para cadastros pessoais -->
+
+            <ion-item>
+                <ion-input
+                    type="password"
+                    fill="solid"
+                    label="Insira sua senha"
+                    labelPlacement="stacked"
+                    value="password"
+                    required
+                    ngModel
+                ></ion-input>
+                <!-- Seria legal um validador dessa senha para ver se corresponde ao requisitos -->
+            </ion-item>
+
+            <div>
+                <ion-item>
+                    <ion-textarea label="Descreva sua especialização médica:" rows="2" labelPlacement="floating" placeholder="Ex: Possuo especialização em cardiologia, e atuo em consultório de segunda a sexta."></ion-textarea>
+                </ion-item>
+            </div>
+
+            <div class="botao">
+                <!-- Alterei o tipo de botão, ficar atento ao type -->
+                <input type="submit" value="Cadastrar Usuário" class="button-cadastrar">
+            </div>
+        </div>
+    </form>
+
+
+    <form *ngIf="usr_type == 3" #event="ngForm" (ngSubmit)="Create(event, 'user-familhar')">
+        <p class="users">Usuário Familiar</p>
+
+        <div class="config-perfil">
+
+            <ion-item>
+                <ion-input
+                label="Nome completo:"
+                type="text"
+                class="campos"
+                labelPlacement="stacked"
+                [clearInput]="true"
+                placeholder="Ex: Ricardo Campos"
+                name="nome"
+                required
+                >
+                </ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-select name="sexo" label-placement="floating" label="Selecione seu Sexo:" required>
+                    <ion-select-option [value]="true">Feminino</ion-select-option>
+                    <ion-select-option >Masculino</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+        
+            <ion-item>
+                <ion-input
+                    type="email"
+                    fill="solid"
+                    label="Email"
+                    name="email"
+                    labelPlacement="stacked"
+                    placeholder="Ex: exemplo@exemplo.com"
+                    ngModel
+                    required
+                ></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                <ion-input
+                    type="password"
+                    fill="solid"
+                    label="Insira sua senha"
+                    labelPlacement="stacked"
+                    value="password"
+                    required
+                    ngModel
+                ></ion-input>
+                <!-- Seria legal um validador dessa senha para ver se corresponde ao requisitos -->
+            </ion-item>
+
+            <div>
+                <p class="data">Selecione sua data de nascimento:</p>
+            </div>
+            <ion-item>
+                <input type="date" class="data" name="data_nascimento" placeholder="insira data de nascimento"
+                required>
+                <ion-label class="label-idade">XX Anos</ion-label>
+            </ion-item>
+            
+            <div>
+                <ion-item>
+                    <ion-textarea label="Descreva sua especialização médica:" rows="2" labelPlacement="floating" placeholder="Ex: Possuo especialização em cardiologia, e atuo em consultório de segunda a sexta."></ion-textarea>
+                </ion-item>
+            </div>
+
+            <div class="botao">
+                <!-- Alterei o tipo de botão, ficar atento ao type -->
+                <input type="submit" value="Cadastrar Usuário" class="button-cadastrar">
+            </div>
+
+        </div>
+
+    </form>
+    
+    
+    <!-- Fim da página de Cadastro -->
+    
+    
+    <div *ngFor="let user of usuarios; index as i">
+    
+        {{ i }}
+    
+        <h5>Id: {{ user.id }}</h5>
+        <h1>Nome: {{ user.nome }}</h1>
+        <!--<p>Idade: {{ user.idade }}</p>-->
+    
+        <p>Sexo: {{ user.sexo === true ? "Feminino" : "Masculino" }}</p>
+    
+        <p>Email: {{ user.email }}</p>
+        <p>Senha Hash: {{ user.hash_senha }}</p>
+    
+        <p>Data de Nascimento: {{ user.data_nascimento }}</p>
+        <p>Data de Criacao: {{ user.data_criacao }}</p>
+    
+        <p>Descriacao: {{ user.descricao }}</p>
+    
+        <input [value]="'Delete' + user.nome" type="button" (click)="Delete(user.id)">
+    
+        <hr>
+    
+    </div>
+</ion-app>

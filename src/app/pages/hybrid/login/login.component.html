@@ -1,0 +1,79 @@
+
+
+<ion-app>
+  <header>
+    <div class="cabecalho">
+        <ion-img class="img-logo"src="assets/image/logo.png"alt="Logo"></ion-img>
+        <ion-title class="titulo-principal">MedTempo</ion-title>
+      </div>
+  </header>
+
+
+  <ion-content [fullscreen]="true">
+    <ion-segment [(ngModel)]="selectTabs">
+      <ion-segment-button value="recent">
+        <ion-label>Entrar</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="missed">
+        <ion-label>Cadastrar</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div *ngIf="selectTabs =='recent'"> <!-- Div do conteúdo entrar -->
+      <h3 class="subtitulo">Faça login na sua conta:</h3>
+
+      <form #event="ngForm" (ngSubmit)="Login(event)">
+
+        <div class="caixa-selecao">
+          <ion-item class="opcoes">
+            <ion-select label="Selecione seu tipo de perfil:" label-placement="floating" ngModel name="user_type" required>
+              <ion-select-option selected [value]="1">Pessoal</ion-select-option>
+              <ion-select-option [value]="2">Especialista</ion-select-option>
+              <ion-select-option [value]="3">Família</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+
+        <div class="corpo-formulario">
+          <ion-input class="input-entrar"
+              name="email"
+              type="email"
+              label="Email:" 
+              label-placement="floating"
+              placeholder="Insira o email"
+              color="medium"
+              ngModel
+              required
+          ></ion-input>
+        
+          <ion-input class="input-senha"
+              type="password"
+              name="senha"
+              label="Senha:" 
+              label-placement="floating" 
+              placeholder="Insira a senha"
+              color="medium"
+              ngModel
+              required
+          />
+
+          <input class="button-entrar" type="submit" value="Entrar" />
+          <a href="/" class="botao-senha">Esqueceu sua senha?</a>
+        </div>
+
+      </form> 
+    </div>
+
+    <div *ngIf="selectTabs =='missed'">
+      <h3 class="subtitulo">Faça seu cadastro:</h3>
+      
+      
+    </div>
+
+  </ion-content>
+
+
+
+
+</ion-app>
